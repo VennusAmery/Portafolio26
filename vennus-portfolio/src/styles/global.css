@@ -1,0 +1,323 @@
+/* ============================================================
+   VENNUS PORTFOLIO — Global Styles & CSS Variables
+   Retro OS Desktop Aesthetic
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* ── Color Palette ── */
+:root {
+  /* Base */
+  --cream: #f5f0e8;
+  --beige: #ede5d4;
+  --beige-dark: #d4c9b4;
+  --paper: #faf6ef;
+
+  /* Accents */
+  --pink: #f2b8c6;
+  --pink-light: #fce4ec;
+  --mint: #b8e0c8;
+  --mint-light: #e4f5ec;
+  --blue: #b8cfe0;
+  --blue-light: #e4f0f8;
+  --lavender: #d4b8e0;
+  --yellow: #f0e0a8;
+
+  /* UI */
+  --black: #1a1612;
+  --shadow: rgba(26, 22, 18, 0.18);
+  --shadow-hard: rgba(26, 22, 18, 0.35);
+  --border: 2px solid #1a1612;
+  --border-thin: 1.5px solid #1a1612;
+
+  /* Desktop */
+  --desktop-bg: #c8dde8;
+  --taskbar-bg: #e8dfd0;
+
+  /* Typography */
+  --font-display: 'Special Elite', serif;
+  --font-mono: 'Courier Prime', monospace;
+  --font-pixel: 'VT323', monospace;
+
+  /* Spacing */
+  --window-radius: 8px;
+  --icon-size: 72px;
+
+  /* Transitions */
+  --transition: 0.2s ease;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --cream: #1e1a14;
+  --beige: #2a2218;
+  --beige-dark: #3a3020;
+  --paper: #251f16;
+  --pink: #8a3a50;
+  --pink-light: #3d1a24;
+  --mint: #3a6a4a;
+  --mint-light: #1a3024;
+  --blue: #3a5a70;
+  --blue-light: #1a2a3a;
+  --lavender: #5a3a70;
+  --yellow: #6a5a1a;
+  --black: #f5f0e8;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --shadow-hard: rgba(0, 0, 0, 0.7);
+  --border: 2px solid #f5f0e8;
+  --border-thin: 1.5px solid #f5f0e8;
+  --desktop-bg: #1a1208;
+  --taskbar-bg: #2a2218;
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--black);
+  background: var(--desktop-bg);
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  /* Grain texture overlay */
+  position: relative;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.06;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--beige);
+  border-left: var(--border-thin);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--beige-dark);
+  border: 1px solid var(--black);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pink);
+}
+
+/* ── Window Component ── */
+.os-window {
+  position: absolute;
+  background: var(--cream);
+  border: var(--border);
+  border-radius: var(--window-radius);
+  box-shadow: 4px 4px 0px var(--shadow-hard);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 300px;
+  min-height: 200px;
+  user-select: none;
+}
+
+.os-window-titlebar {
+  background: var(--beige);
+  border-bottom: var(--border);
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: grab;
+  flex-shrink: 0;
+}
+
+.os-window-titlebar:active {
+  cursor: grabbing;
+}
+
+.os-window-buttons {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.os-window-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1.5px solid var(--black);
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+
+.os-window-btn:hover { opacity: 0.7; }
+.os-window-btn.close { background: #f2b8b8; }
+.os-window-btn.minimize { background: var(--yellow); }
+.os-window-btn.maximize { background: var(--mint); }
+
+.os-window-title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: var(--black);
+  pointer-events: none;
+}
+
+.os-window-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ── Retro Button ── */
+.retro-btn {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 6px 16px;
+  background: var(--beige);
+  border: var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--black);
+  transition: all var(--transition);
+  color: var(--black);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.retro-btn:hover {
+  background: var(--pink-light);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--black);
+}
+
+.retro-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--black);
+}
+
+/* ── Progress Bar Retro ── */
+.retro-progress {
+  width: 100%;
+  height: 16px;
+  background: var(--paper);
+  border: var(--border-thin);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.retro-progress-fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--pink) 0px,
+    var(--pink) 6px,
+    var(--pink-light) 6px,
+    var(--pink-light) 8px
+  );
+  border-right: 1px solid var(--black);
+  transition: width 1s ease;
+}
+
+/* ── Badge ── */
+.retro-badge {
+  font-family: var(--font-pixel);
+  font-size: 16px;
+  padding: 2px 10px;
+  border: var(--border-thin);
+  border-radius: 3px;
+  background: var(--paper);
+  display: inline-block;
+}
+
+/* ── Section Padding ── */
+.window-pad {
+  padding: 20px;
+}
+
+/* ── Typography Helpers ── */
+.pixel-title {
+  font-family: var(--font-pixel);
+  font-size: 28px;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.display-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.mono-text {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.label {
+  font-family: var(--font-pixel);
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+/* ── Divider ── */
+.retro-divider {
+  border: none;
+  border-top: var(--border-thin);
+  margin: 16px 0;
+}
+
+/* ── Card ── */
+.retro-card {
+  background: var(--paper);
+  border: var(--border);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0 var(--shadow-hard);
+  padding: 16px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.retro-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--shadow-hard);
+}
+
+/* ── Status dots ── */
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--black);
+  margin-right: 6px;
+}
+.status-dot.completed { background: var(--mint); }
+.status-dot.development { background: var(--yellow); }
+.status-dot.prototype { background: var(--blue); }
+.status-dot.research { background: var(--lavender); }
+
+/* ── Selection ── */
+::selection {
+  background: var(--pink);
+  color: var(--black);
+}
