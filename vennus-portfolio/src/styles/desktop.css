@@ -115,24 +115,23 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  bottom: 52px;      
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap-reverse;
+  align-content: flex-end;
+  align-items: center;   
+  justify-content: center;
   gap: 20px;
   z-index: 10;
+  pointer-events: none; 
+
 }
 
-.desktop-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  width: 80px;
-  text-align: center;
-  padding: 6px;
-  border-radius: 4px;
-  transition: background var(--transition);
-  border: 1.5px solid transparent;
+.desktop-icons > * {
+  pointer-events: all;  
+  align-items: center;  
+  justify-content: center;
 }
 
 .desktop-icon:hover {
@@ -146,8 +145,8 @@
 }
 
 .icon-image {
-  width: 52px;
-  height: 52px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,11 +165,14 @@
 
 .icon-label {
   font-family: var(--font-pixel);
-  font-size: 13px;
+  font-size: 11px;
   color: var(--black);
   text-shadow: 0 1px 2px rgba(255,255,255,0.8);
   line-height: 1.2;
   word-break: break-word;
+  text-align: center;
+  width: 100%;
+  margin-top: 5px;
 }
 
 /* ── Left dock icons ── */

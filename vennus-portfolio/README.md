@@ -1,4 +1,4 @@
-# ✦ Vennus Portfolio — Retro OS Desktop
+# ✦ Vennus Portfolio 
 
 A creative portfolio built as an interactive retro desktop environment.
 LegalTech · Cybersecurity · Development
@@ -16,16 +16,12 @@ Available commands in the terminal window:
 - `easter` — secret
 - `clear` — clear screen
 
-Add custom commands in `src/data/portfolioData.js` → `TERMINAL_RESPONSES`.
-
---
-
 ## 🛠 Built With
 
 - React 18
 - Framer Motion (animations)
 - React Icons
-- CSS custom properties (no Tailwind)
+- CSS custom properties
 - Google Fonts: VT323, Special Elite, Courier Prime
 
 ---

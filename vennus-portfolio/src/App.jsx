@@ -13,6 +13,7 @@ import SkillsWindow from './components/SkillsWindow';
 import ExperienceWindow from './components/ExperienceWindow';
 import ContactWindow from './components/ContactWindow';
 import TerminalWindow from './components/TerminalWindow';
+import CertificatesWindow from './components/CertificatesWindow';
 
 import fotoPerrito from './images/perrito.jpeg';
 
@@ -80,6 +81,17 @@ const WINDOWS_CONFIG = [
     defaultPosition: { x: 100, y: 100 },
     defaultSize: { w: 560, h: 420 },
     component: TerminalWindow,
+  },
+
+  {
+    id: 'certificates',
+    title: '📜 Certifications',
+    icon: '📜',
+    label: 'Certificates.sys',
+    color: 'var(--mint-light)', 
+    defaultPosition: { x: 120, y: 120 },
+    defaultSize: { w: 560, h: 460 },
+    component: CertificatesWindow, 
   },
 ];
 

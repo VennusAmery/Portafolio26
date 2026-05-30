@@ -54,7 +54,38 @@ export const PROJECTS = [
     tech: ["Python", "OpenCV", "MediaPipe"],
     status: "Completed",
     color: "#c5e8d1"
+  },
+
+  {
+    id: 3,
+    name: "Merge It",
+    category: "Web Utility / Web Tool",
+    description: "A secure, client-side PDF management tool featuring interactive drag-and-drop file reordering, instant iframe document previews, and client-side compilation via pdf-lib, ensuring absolute data privacy by processing all files entirely within the user's browser.",
+    tech: ["React", "TypeScript", "pdf-lib", "@dnd-kit/core", "Framer Motion"],
+    status: "Completed",
+    color: "var(--pink-light)"
+  },
+
+  {
+    id: 4,
+    name: "chibidressup",
+    category: "Web Utility / Web Tool",
+    description: "A secure, client-side PDF management tool featuring interactive drag-and-drop file reordering, instant iframe document previews, and client-side compilation via pdf-lib, ensuring absolute data privacy by processing all files entirely within the user's browser.",
+    tech: ["React", "TypeScript", "pdf-lib", "@dnd-kit/core", "Framer Motion"],
+    status: "Completed",
+    color: "var(--pink-light)"
+  },
+
+  {
+    id: 5,
+    name: "dcascraper",
+    category: "Web Utility / Web Tool",
+    description: "A secure, client-side PDF management tool featuring interactive drag-and-drop file reordering, instant iframe document previews, and client-side compilation via pdf-lib, ensuring absolute data privacy by processing all files entirely within the user's browser.",
+    tech: ["React", "TypeScript", "pdf-lib", "@dnd-kit/core", "Framer Motion"],
+    status: "Completed",
+    color: "var(--pink-light)"
   }
+
 ];
 
 export const SKILLS = {

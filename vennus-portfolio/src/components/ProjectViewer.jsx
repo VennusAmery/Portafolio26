@@ -2,19 +2,27 @@
 // ProjectViewer.jsx
 // ============================================================
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import commingSoon from '../videos/commingsoon.gif';
 
 import scubacat from '../videos/scubacat-demo.mp4';
-import screen1 from '../images//scubacat/gato-inicio.png';
-import screen2 from '../images//scubacat/gato-sonrisa.png';
-import screen3 from '../images//scubacat/gato-boca.png';
-import screen4 from '../images//scubacat/gato-palma.png';
-import screen5 from '../images//scubacat/gato-puno.png';
+import screen1 from '../images/scubacat/gato-inicio.png';
+import screen2 from '../images/scubacat/gato-sonrisa.png';
+import screen3 from '../images/scubacat/gato-boca.png';
+import screen4 from '../images/scubacat/gato-palma.png';
+import screen5 from '../images/scubacat/gato-puno.png';
 
+import MergeIt from '../videos/MergeIt.mp4';
+import mergingScreen1 from '../images/MergeIt/MergeIt1.png';
+import mergingScreen2 from '../images/MergeIt/MergeIt2.png';
+import mergingScreen3 from '../images/MergeIt/MergeIt3.png';
+
+import LittleMe from '../videos/LittleMe.mp4';
+import chibiScreen1 from '../images/LittleMe/LittleMe1.png';
+import chibiScreen2 from '../images/LittleMe/LittleMe2.png';
 
 // ── Project Definitions ──────────────────────────────────────
 const PROJECTS = [
@@ -28,8 +36,10 @@ const PROJECTS = [
     statusColor: '#f0e0a8',
     accentColor: '#b8cfe0',
     tech: ['React', 'Node.js', 'MySQL', 'OpenAI'],
+    githubUrl: '', 
+    liveUrl: '', 
     description: 'Full legal management platform with AI-powered case tracking, document automation and jurisprudence analysis.',
-    prototypeLabel: '▶️ Ver Demostración en Video',
+    prototypeLabel: '▶️ Run Tool',
     bootMessages: [
       'Initializing LUMES OS...',
       'Loading legal modules [OK]',
@@ -37,7 +47,6 @@ const PROJECTS = [
       'Mounting AI engine (LEX) [OK]',
       'LUMES ready.',
     ],
-
     bootColor: '#b8cfe0',
     prototype: () => (
       <div style={{ 
@@ -65,29 +74,18 @@ const PROJECTS = [
         />
       </div>
     ),
-
     files: {
       'README.md': '# LUMES\nLegal Management + AI System\n\n## Stack\nReact · Node.js · MySQL · OpenAI\n\n## Modules\n- Case Management\n- LEX AI Assistant\n- Document Repository\n- Analytics Dashboard',
       'architecture.txt': 'CLIENT → React SPA\nAPI → REST (Node/Express)\nAI → OpenAI GPT-4 fine-tuned\nDB → MySQL 8.0\nAUTH → JWT + refresh tokens',
     },
-
     screenshots: [
-      { label: 'Dashboard', 
-        desc: 'Vista general: casos activos, alertas y estadísticas en tiempo real.' 
-      },
-      { label: 'Expedientes', 
-        desc: 'Gestión completa de expedientes con filtros, búsqueda y acceso rápido.' 
-      },
-      { label: 'LEX AI', 
-        desc: 'Chat con IA jurídica entrenada en legislación local y GDPR.' 
-      },
-      { label: 'Analytics', 
-        desc: 'Métricas de rendimiento legal: tasa de éxito, documentos, consultas.' 
-      },
+      { label: 'Dashboard', desc: 'Vista general: casos activos, alertas y estadísticas en tiempo real.' },
+      { label: 'Expedientes', desc: 'Gestión completa de expedientes con filtros, búsqueda y acceso rápido.' },
+      { label: 'LEX AI', desc: 'Chat con IA jurídica entrenada en legislación local y GDPR.' },
+      { label: 'Analytics', desc: 'Métricas de rendimiento legal: tasa de éxito, documentos, consultas.' },
     ],
   },
-
-{
+  {
     id: 'scubacat',
     name: 'ScubaCat (CatIA)',
     tagline: 'Computer Vision & Gesture Recognition',
@@ -97,8 +95,9 @@ const PROJECTS = [
     statusColor: '#b8e0c8',
     accentColor: '#30699844', 
     tech: ['Python', 'OpenCV', 'MediaPipe', 'Math'],
-    description: 'Sistema de visión artificial en tiempo real que utiliza redes neuronales ligeras para detectar expresiones faciales (sonrisas, apertura de boca) y gestos manuales (puño, palma). Mapea dinámicamente cada gesto para controlar la reproducción de videos interactivos e incluye calibración biométrica automatizada.',
-    prototypeLabel: '▶️ Ver Demostración en Video',
+    githubUrl: 'https://github.com/VennusAmery/IA-Gato', 
+    liveUrl: '', 
+    description: 'A real-time computer vision system utilizing lightweight neural networks to detect facial expressions (smiles, mouth aperture) and hand gestures (fist, open palm). It dynamically maps every gesture to control interactive video playback and features automated biometric calibration.',    prototypeLabel: '▶️ Run Tool',
     bootMessages: [
       'C:\\Users\\Vennus> python scubacat.py',
       'Initializing OpenCV video capture on dev(0)... [OK]',
@@ -107,7 +106,6 @@ const PROJECTS = [
       'Playing execution demo... [OK]',
     ],
     bootColor: '#ffd43b', 
-    
     prototype: () => (
       <div style={{ 
         height: '100%', 
@@ -137,41 +135,238 @@ const PROJECTS = [
         />
       </div>
     ),
-
     files: {
-      'README.md': `# CatIA - ScubaCat 🐱\n\nScript interactivo de reconocimiento gestual.
-      \n\n## Requisitos de hardware\n- Cámara Web Integrada o USB (Capaz de resolver 640x480)
-      \n\n## Ejecución\n\`\`\`bash\npip install -r requirements.txt\npython scubacat.py
-      \n\`\`\`\n\n*Nota: El script se autocalibrará en los primeros 2.5 segundos. Quédate serio mirando a la pantalla.*`,
+
+      'README.md': `# CatIA - ScubaCat 🐱\n\nInteractive gesture recognition script.\n\n## Hardware Requirements\n- Integrated Webcam or USB Camera (Capable of 640x480 resolution)\n\n## Execution\n\`\`\`bash\npip install -r requirements.txt\npython scubacat.py\n\`\`\`\n\n*Note: The script will auto-calibrate during the first 2.5 seconds. Please look directly at the screen with a neutral expression.*`,    },
+    
+      screenshots: [
+      { label: 'Main Interface', 
+        desc: 'Initial system startup showing the camera feed setup and OpenCV canvas initialization.', 
+        src: screen1 },
+      { label: 'Smile Detection', 
+        desc: 'Real-time facial mesh tracking capturing smile expressions to trigger character interactions.', 
+        src: screen2 },
+      { label: 'Mouth Tracking', 
+        desc: 'Active monitoring of mouth geometry and aperture landmarks using MediaPipe FaceMesh.', 
+        src: screen3 },
+      { label: 'Open Palm Gesture', 
+        desc: 'Hand landmark tracking recognizing an open palm gesture to execute system commands.', 
+        src: screen4 },
+      { label: 'Fist Gesture', 
+        desc: 'Hand skeleton mapping detecting a closed fist gesture for interactive controls.', 
+        src: screen5 }
+    ]
+  },
+
+  {
+    id: 'MergeIt',
+    name: 'Merge It',
+    tagline: 'Secure PDF Management',
+    category: 'Web Utility / Web Tool',
+    icon: '📑',
+    status: 'Completed',
+    statusColor: '#b8e0c8',
+    accentColor: '#FFB6C144', 
+    githubUrl: '', 
+    liveUrl: 'https://vennusamery.github.io/MergeIt/',   
+    tech: ["React", "TypeScript", "pdf-lib", "@dnd-kit/core", "Framer Motion"],
+    description: 'A secure, client-side PDF management tool featuring interactive drag-and-drop file reordering, instant iframe document previews, and client-side compilation via pdf-lib, ensuring absolute data privacy by processing all files entirely within the users browser.',
+    prototypeLabel: '▶️ Run Tool',
+    bootMessages: [
+      'C:\\Users\\Vennus> npm run start:mergeit',
+      'Loading PDF-Lib binary processing core... [OK]',
+      'Initializing Drag-and-Drop Context (@dnd-kit)... [OK]',
+      'Setting up local blob memory allocation... [OK]',
+      'Mounting interactive dinosaur UI... [OK]',
+      'System ready. Privacy Shield Active: 100% Local execution.',
+    ],
+    bootColor: '#ffb6c1', 
+    prototype: () => (
+      <div style={{ 
+        height: '100%', 
+        minHeight: '350px',
+        background: '#121214', 
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '12px',
+        borderRadius: '8px',
+        overflow: 'hidden'
+      }}>
+        <video 
+          src={MergeIt} 
+          controls
+          autoPlay
+          muted
+          loop
+          style={{
+            width: '100%',
+            height: '100%',
+            maxHeight: '450px',
+            objectFit: 'contain', 
+            borderRadius: '6px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.5)'
+          }}
+        />
+      </div>
+    ),
+    
+    files: {
+      'README.md': `# 📑 Merge It\n\nInteractive tool to merge, reorder, and preview PDF files with 100% data privacy.\n\n## 🛡️ Privacy by Design\nAll processing takes place strictly inside your browser using **pdf-lib**.\n\n## 🚀 Key Features\n- Direct drag-and-drop file reordering.\n- Safe real-time iframe document previews.`,
     },
     screenshots: [
-      { label: 'Inicio', 
-        desc: ' ',
-        src: screen1
-      },
-
-      { label: 'Gato-Sonrisa', 
-        desc: ' ',
-        src: screen2 
-      },
-
-      { label: 'Gato-Boca', 
-        desc: ' ',
-        src: screen3 
-      },
-
-      { label: 'Gato-Palma', 
-        desc: '',
-        src: screen4
-      },
-
-      { label: 'Gato-Puno', 
-        desc: ' ',
-        src: screen5
-      },
-  
+      { label: 'Home Screen', desc: 'Main retro interface with the interactive dinosaur guide, ready for document insertion.', src: mergingScreen1 },
+      { label: 'File Upload', desc: 'Active file queue displaying the imported PDFs, enabled with drag-and-drop sortable items.', src: mergingScreen2 },
+      { label: 'Download Preview', desc: 'Instant sandboxed iframe viewport overlay to securely verify PDF details before compilation.', src: mergingScreen3 }
     ]
-}
+  },
+
+{
+    id: 'chibidressup',
+    name: 'Chibi Dress-Up',
+    tagline: 'Interactive Character Customizer',
+    category: 'Game / Web Tool',
+    icon: '✨',
+    status: 'Completed',
+    statusColor: '#b8e0c8',
+    accentColor: '#F5EFE6', 
+    tech: ['React', 'Tailwind CSS', 'State Management', 'Framer Motion'],
+    githubUrl: '', 
+    liveUrl: 'https://vennusamery.github.io/Little_Me/',   
+    description: 'A charming, interactive 2D character customization dress-up game. Features dynamic configuration state mapping that pairs structural outfit combinations to custom matrix-based artwork assets.',
+    prototypeLabel: '▶️ Play Game',
+    bootMessages: [
+      'C:\\Users\\Vennus> npm run start:chibi-dressup',
+      'Loading asset coordination matrix... [OK]',
+      'Initializing closet layer engine (4-point config)... [OK]',
+      'Mapping asset combination indexing (1 to 54)... [OK]',
+      'Injecting dynamic Crayon UI textures... [OK]',
+      'System ready. Welcome to the Chibi Closet!',
+    ],
+    bootColor: '#C4B29E', 
+    prototype: () => (
+      <div style={{ 
+        height: '100%', 
+        minHeight: '350px',
+        background: '#121214', 
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '12px',
+        borderRadius: '8px',
+        overflow: 'hidden'
+      }}>
+        <video 
+          src={LittleMe} 
+          controls
+          autoPlay
+          muted
+          loop
+          style={{
+            width: '100%',
+            height: '100%',
+            maxHeight: '450px',
+            objectFit: 'contain', 
+            borderRadius: '6px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.5)'
+          }}
+        />
+      </div>
+    ),
+
+    files: {
+      'README.md': `# 🧸 Chibi Dress-Up\n\nAn interactive 2D avatar customization tool built with React and Tailwind CSS.\n\n## 🚀 Core Architecture\n- **Dynamic Configuration Matrix:** Manages synchronous state logic across 4 standalone slots (Tops, Bottoms, Hats, Footwear).\n- **Optimized Asset Pipeline:** Computes precise combinatorial mapping to resolve index requests against pre-rendered assets.`,
+      'architecture.txt': 'UI FRAMEWORK → React 18\nSTYLING → Tailwind CSS (Crayon Canvas Theme)\nSTATE ENGINE → Reactive Configuration Hook\nASSET PIPELINE → Synchronous Layer Matrix Mapping\nTARGET DISPLAYS → 100% Responsive Touch Layout'
+    },
+    screenshots: [
+      { label: 'Closet Interface', 
+        desc: 'Main customizer window showing category tabs and the item thumbnail selection grid.',
+        src: chibiScreen1 
+      },
+
+      { label: 'Avatar Preview', 
+        desc: 'Real-time composition workspace rendering the current structural fashion outfit.',
+        src: chibiScreen2
+      }
+    ]
+  },
+
+{
+    id: 'dcascraper',
+    name: 'DCA Automation Pipeline',
+    tagline: 'Legal Gazette Scraper & OCR Text Extractor',
+    category: 'Backend / LegalTech',
+    icon: '📰',
+    status: 'Completed',
+    statusColor: '#b8e0c8',
+    accentColor: '#1a120844', 
+    tech: ['Python', 'OCR', 'PDF Processing', 'Automation'],
+    githubUrl: '',
+    liveUrl: '',
+    description: 'An automated legal data pipeline designed to track the "Diario de Centro América" (Official Gazette). It checks for new daily publications, downloads newly issued PDF files, handles deduplication states, tracks history logs, and converts documents into structured searchable text via image OCR pipelines.',
+    prototypeLabel: '▶️ Execute Script',
+    bootMessages: [
+      'C:\\Users\\Vennus> python dca_pipeline.py',
+      'Connecting to Diario de Centro América gateway... [OK]',
+      'Fetching latest gazette publication metadata... [OK]',
+      'Checking state history logs... [OK]',
+      'Launching execution sequence...',
+    ],
+    bootColor: '#a8f0c0', 
+
+    prototype: () => (
+      <div style={{ 
+        height: '100%', 
+        minHeight: '350px',
+        background: '#121214', 
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '12px',
+        borderRadius: '8px',
+        overflow: 'hidden'
+      }}>
+        <video 
+          src={MergeIt} 
+          controls
+          autoPlay
+          muted
+          loop
+          style={{
+            width: '100%',
+            height: '100%',
+            maxHeight: '450px',
+            objectFit: 'contain', 
+            borderRadius: '6px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.5)'
+          }}
+        />
+      </div>
+    ),
+
+    files: {
+      'README.md': `# 📰 DCA Legal Gazette Pipeline\n\nAutomated tracking solution to monitor, pull, partition, and process text data strings out of Guatemalas official legal gazette ("Diario de Centro América").\n\n## 🛠️ Internal Framework\n- **Scraper Engine:** Target endpoint analysis to monitor publication schedules.\n- **Deduplication Audit:** State check mechanisms to ignore redundant execution runs.\n- **OCR Core:** Converts structural image layouts into queryable raw text tokens.`,
+      'architecture.txt': 'CORE ENGINE → Python 3.11\nSCRAPER PATTERN → Document Target Requests\nDEDUPLICATION → Local File System State Registry\nPROCESSING → PDF Binary to Image Array Mesh\nTRANSCRIPTION ENGINE → Layout-Aware Optical OCR Extraction'
+    },
+
+    screenshots: [
+      { label: 'Scraper Scan', 
+        desc: 'Validating the official gateway registry to spot publication schedule differences.',
+        src: commingSoon
+      },
+
+      { label: 'OCR Processing', 
+        desc: 'Isolating layout grids to run translation matrix lookups across document files.',
+        src: commingSoon
+      },
+
+      { label: 'Database Write', 
+        desc: 'Storing transcribed raw string outputs directly into clean system indexes.',
+        src: commingSoon
+      }
+    ]
+  },
+
 ];
 
 // ── Boot Screen ──────────────────────────────────────────────
@@ -194,22 +389,22 @@ function BootScreen({ project, onComplete }) {
     }
   }, [lineIdx, project.bootMessages, onComplete]);
 
-  const isDark = project.id === 'cyberlex';
+  const isDark = project.id === 'scubacat' || project.id === 'lumes';
 
   return (
     <div style={{
       height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-      background: isDark ? '#000' : 'var(--cream)',
+      background: isDark ? '#121214' : 'var(--cream, #f5f2eb)',
       fontFamily: 'var(--font-mono)', padding: 30, gap: 16,
     }}>
       <div style={{ fontSize: 48 }}>{project.icon}</div>
-      <div style={{ fontFamily: 'var(--font-pixel)', fontSize: 28, color: isDark ? project.bootColor : 'var(--black)' }}>
+      <div style={{ fontFamily: 'var(--font-pixel)', fontSize: 28, color: isDark ? project.bootColor : 'var(--black, #1a1612)' }}>
         {project.name}
       </div>
       <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, width: 300 }}>
         {project.bootMessages.slice(0, lineIdx).map((msg, i) => (
           <motion.div key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-            style={{ color: isDark ? project.bootColor : 'var(--black)', marginBottom: 4, lineHeight: 1.6, opacity: i === lineIdx - 1 ? 1 : 0.4 }}>
+            style={{ color: isDark ? project.bootColor : 'var(--black, #1a1612)', marginBottom: 4, lineHeight: 1.6, opacity: i === lineIdx - 1 ? 1 : 0.4 }}>
             {isDark ? msg : `> ${msg}`}
           </motion.div>
         ))}
@@ -218,9 +413,9 @@ function BootScreen({ project, onComplete }) {
             style={{ color: project.bootColor }}>▋</motion.span>
         )}
       </div>
-      <div style={{ width: 300, height: 16, border: '2px solid var(--black)', background: 'var(--paper)', borderRadius: 2, overflow: 'hidden' }}>
+      <div style={{ width: 300, height: 16, border: '2px solid var(--black, #1a1612)', background: 'var(--paper, #fff)', borderRadius: 2, overflow: 'hidden' }}>
         <motion.div animate={{ width: `${progress}%` }} transition={{ duration: 0.3 }}
-          style={{ height: '100%', background: project.bootColor, borderRight: '1px solid var(--black)' }} />
+          style={{ height: '100%', background: project.bootColor, borderRight: '1px solid var(--black, #1a1612)' }} />
       </div>
     </div>
   );
@@ -254,7 +449,7 @@ function FileExplorer({ project }) {
       <div style={{ flex: 1, padding: 16, overflow: 'auto', background: 'var(--paper)' }}>
         {!selectedFile && (
           <div style={{ opacity: 0.4, fontFamily: 'var(--font-pixel)', fontSize: 15, textAlign: 'center', marginTop: 40 }}>
-            Selecciona una carpeta →
+            Select a folder →
           </div>
         )}
         
@@ -268,7 +463,8 @@ function FileExplorer({ project }) {
           <div>
             <div style={{ fontFamily: 'var(--font-pixel)', fontSize: 16, marginBottom: 12 }}>System Architecture</div>
             <pre style={{ fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.7, whiteSpace: 'pre-wrap', background: 'var(--beige)', border: 'var(--border-thin)', padding: 12, borderRadius: 4 }}>
-              {project.files?.['architecture.txt'] || `CLIENT → ${project.tech[0]} Frontend\nBACKEND → ${project.tech[1] || 'API Layer'}\nDB → ${project.tech[2] || 'Database'}`}
+
+              {project.files?.['architecture.txt'] || `CLIENT → ${project.tech[0]} Frontend\nPROCESSING → 100% Client-Side / Local`}
             </pre>
           </div>
         )}
@@ -396,21 +592,40 @@ function ProjectModal({ project, onClose }) {
             <motion.div key="info" initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ padding: 20, overflow: 'auto', height: '100%' }}>
               <div style={{ fontFamily: 'var(--font-display)', fontSize: 20, marginBottom: 6 }}>{project.icon} {project.name}</div>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 13, opacity: 0.7, marginBottom: 16 }}>{project.description}</div>
+              
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 18 }}>
                 {project.tech.map(t => (
                   <span key={t} style={{ fontFamily: 'var(--font-pixel)', fontSize: 15, padding: '2px 10px', border: 'var(--border-thin)', background: 'var(--paper)', borderRadius: 3 }}>{t}</span>
                 ))}
               </div>
+              
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 18 }}>
                 <span style={{ padding: '3px 10px', background: project.statusColor, border: 'var(--border-thin)', borderRadius: 3, fontFamily: 'var(--font-pixel)', fontSize: 14 }}>{project.status}</span>
                 <span style={{ padding: '3px 10px', background: 'var(--beige)', border: 'var(--border-thin)', borderRadius: 3, fontFamily: 'var(--font-pixel)', fontSize: 14 }}>{project.category}</span>
               </div>
+
+              {/* LINKS EXTERNOS */}
+              {(project.githubUrl || project.liveUrl) && (
+                <div style={{ display: 'flex', gap: 12, marginBottom: 22 }}>
+                  {project.githubUrl && (
+                    <a href={project.githubUrl} target="_blank" rel="noreferrer" className="retro-btn" style={{ fontSize: 12, padding: '5px 12px', background: 'var(--beige)', textDecoration: 'none', color: 'black', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                      📂 View Source Code
+                    </a>
+                  )}
+                  {project.liveUrl && (
+                    <a href={project.liveUrl} target="_blank" rel="noreferrer" className="retro-btn" style={{ fontSize: 12, padding: '5px 12px', background: '#b8e0c8', textDecoration: 'none', color: 'black', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                      🌐 Launch Application
+                    </a>
+                  )}
+                </div>
+              )}
+
               {project.screenshots && (
                 <div>
-                  <div style={{ fontFamily: 'var(--font-pixel)', fontSize: 16, marginBottom: 10 }}>VISTAS DEL SISTEMA</div>
+                  <div style={{ fontFamily: 'var(--font-pixel)', fontSize: 16, marginBottom: 10 }}>SYSTEM SCREENSHOTS</div>
                   {project.screenshots.map((s, i) => (
                     <div key={i} style={{ display: 'flex', gap: 10, padding: '8px 0', borderBottom: '1px solid rgba(26,22,18,.08)' }}>
-                      <span style={{ fontFamily: 'var(--font-pixel)', fontSize: 14, width: 120, flexShrink: 0, color: project.bootColor !== '#f0e0a8' ? 'var(--black)' : 'var(--black)' }}>→ {s.label}</span>
+                      <span style={{ fontFamily: 'var(--font-pixel)', fontSize: 14, width: 140, flexShrink: 0 }}>→ {s.label}</span>
                       <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, opacity: 0.7 }}>{s.desc}</span>
                     </div>
                   ))}
@@ -428,7 +643,6 @@ function ProjectModal({ project, onClose }) {
 // ── Project Card ─────────────────────────────────────────────
 function ProjectCard({ project, onOpen }) {
   const [hovered, setHovered] = useState(false);
-  const statusClass = { Completed: 'completed', 'In Development': 'development', Prototype: 'prototype', Research: 'research' };
 
   return (
     <motion.div
@@ -450,6 +664,7 @@ function ProjectCard({ project, onOpen }) {
         <motion.div animate={{ scale: hovered ? 1.15 : 1 }} transition={{ duration: 0.2 }}>
           {project.icon}
         </motion.div>
+
         {/* Fake window dots */}
         <div style={{ position: 'absolute', top: 8, left: 10, display: 'flex', gap: 4 }}>
           {['#f2b8b8','#f0e0a8','#b8e0c8'].map((c, i) => (
@@ -482,7 +697,7 @@ function ProjectCard({ project, onOpen }) {
         <motion.button
           animate={{ background: hovered ? '#f2b8c6' : 'var(--beige)' }}
           style={{ width: '100%', padding: '6px', fontFamily: 'var(--font-mono)', fontSize: 12, border: 'var(--border)', borderRadius: 3, cursor: 'pointer', color: 'var(--black)', boxShadow: '2px 2px 0 rgba(26,22,18,.25)' }}>
-          {hovered ? project.prototypeLabel : '▶ Abrir proyecto'}
+          {hovered ? project.prototypeLabel : '▶ Open Project'}
         </motion.button>
       </div>
     </motion.div>
@@ -534,7 +749,7 @@ export default function ProjectViewer() {
 
       {/* Hint */}
       <div style={{ marginTop: 16, padding: '8px 12px', background: 'var(--yellow)', border: 'var(--border-thin)', borderRadius: 4, fontFamily: 'var(--font-pixel)', fontSize: 14 }}>
-        💡 Haz click en cualquier proyecto para abrirlo como aplicación interactiva
+        💡 Click on any project to open it as an interactive application      
       </div>
 
       {/* Modal + Backdrop */}
