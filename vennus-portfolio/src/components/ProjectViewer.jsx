@@ -24,6 +24,7 @@ import LittleMe from '../videos/LittleMe.mp4';
 import chibiScreen1 from '../images/LittleMe/LittleMe1.png';
 import chibiScreen2 from '../images/LittleMe/LittleMe2.png';
 
+import DCA from '../videos/API-DCA.mp4';
 // ── Project Definitions ──────────────────────────────────────
 const PROJECTS = [
   {
@@ -301,7 +302,7 @@ const PROJECTS = [
     statusColor: '#b8e0c8',
     accentColor: '#1a120844', 
     tech: ['Python', 'OCR', 'PDF Processing', 'Automation'],
-    githubUrl: '',
+    githubUrl: 'https://github.com/VennusAmery/DCA',
     liveUrl: '',
     description: 'An automated legal data pipeline designed to track the "Diario de Centro América" (Official Gazette). It checks for new daily publications, downloads newly issued PDF files, handles deduplication states, tracks history logs, and converts documents into structured searchable text via image OCR pipelines.',
     prototypeLabel: '▶️ Execute Script',
@@ -327,7 +328,7 @@ const PROJECTS = [
         overflow: 'hidden'
       }}>
         <video 
-          src={MergeIt} 
+          src={DCA} 
           controls
           autoPlay
           muted
@@ -352,17 +353,14 @@ const PROJECTS = [
     screenshots: [
       { label: 'Scraper Scan', 
         desc: 'Validating the official gateway registry to spot publication schedule differences.',
-        src: commingSoon
       },
 
       { label: 'OCR Processing', 
         desc: 'Isolating layout grids to run translation matrix lookups across document files.',
-        src: commingSoon
       },
 
       { label: 'Database Write', 
         desc: 'Storing transcribed raw string outputs directly into clean system indexes.',
-        src: commingSoon
       }
     ]
   },

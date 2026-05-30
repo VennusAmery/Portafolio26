@@ -73,6 +73,20 @@ const MY_CERTIFICATES = [
     skills: ["Python OOP", "Automation Scripts", "Data Structures"],
     pdfUrl: "/certificates/Python para principiantes Ninehub.pdf",
   },
+{
+    title: "Python Immersive BootCamp",
+    issuer: "Alura Latam",
+    date: "2024",
+    skills: ["Python OOP", "Automation Scripts", "Data Structures", "Algorithm Design"],
+    pdfUrl: "/certificates/Certificado Inmersion Python.pdf",
+  },
+  {
+    title: "Tech Innovation & Youth Leadership Program",
+    issuer: "Corporación CPIL",
+    date: "2026",
+    skills: ["Civic Innovation", "Digital Sovereignty", "Democratic Solutions Design", "Tech Leadership (20h)"],
+    pdfUrl: "/certificates/Certificado-DemosJovenes.pdf",
+  },
 ];
 
 export default function CertificatesWindow() {
@@ -99,15 +113,16 @@ export default function CertificatesWindow() {
 
       {/* Header log */}
       <div style={{
-        fontSize: '11px',
-        opacity: 0.7,
+        fontSize: '12px',
         borderBottom: '1px dashed var(--black)',
         paddingBottom: '8px',
         marginBottom: '16px',
         letterSpacing: '0.04em',
         flexShrink: 0,
+        fontWeight: 'bold',
+        color: 'var(--black)',
       }}>
-        SYSTEM SECURITY REGISTRY // VERIFIED_CREDENTIALS.log
+        [CERTIFICATES.log ]
       </div>
 
       {/* PDF Viewer inline */}
@@ -217,7 +232,7 @@ export default function CertificatesWindow() {
               </div>
 
               <div style={{ fontSize: '12px', fontWeight: 'bold', opacity: 0.85 }}>
-                Issuer: <span style={{ color: 'var(--blue)' }}>{cert.issuer}</span>
+                Issuer: <span style={{ color: 'var(--black)' }}>{cert.issuer}</span>
               </div>
 
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginTop: '4px' }}>
