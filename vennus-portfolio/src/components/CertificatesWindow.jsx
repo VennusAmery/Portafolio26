@@ -9,6 +9,7 @@ const MY_CERTIFICATES = [
     date: "2024",
     skills: ["Azure Blob Storage", "Azure Data Lake Storage", "NoSQL Concepts"],
     pdfUrl: "/certificates/Exploración de Azure Storage para datos no relacionales.pdf", 
+    category: "tech" 
   },
   {
     title: "Exploring Core Relational Data Concepts",
@@ -16,6 +17,7 @@ const MY_CERTIFICATES = [
     date: "2024",
     skills: ["SQL", "Relational Databases", "Azure Data Factory"],
     pdfUrl: "/certificates/Exploración de conceptos fundamentales de datos relacionales.pdf",
+    category: "tech" 
   },
   {
     title: "Azure Cosmos DB Fundamentals",
@@ -23,6 +25,7 @@ const MY_CERTIFICATES = [
     date: "2024",
     skills: ["NoSQL", "Cosmos DB", "Global Distribution", "Latency Management"],
     pdfUrl: "/certificates/Exploración de los aspectos básicos de Azure Cosmos DBs.pdf",
+    category: "tech" 
   },
   {
     title: "Large Scale Data Analytics Foundations",
@@ -30,6 +33,7 @@ const MY_CERTIFICATES = [
     date: "2024",
     skills: ["Big Data", "Azure Synapse Analytics", "Data Lakes"],
     pdfUrl: "/certificates/Exploración de los aspectos básicos del análisis a gran escala.pdf",
+    category: "tech" 
   },
   {
     title: "Real-Time Data Analytics Streamlining",
@@ -37,6 +41,7 @@ const MY_CERTIFICATES = [
     date: "2024",
     skills: ["Stream Analytics", "Event Hubs", "Real-Time Querying"],
     pdfUrl: "/certificates/Exploración de los aspectos básicos del análisis en tiempo real.pdf",
+    category: "tech" 
   },
   {
     title: "Core Data Principles & Architectures",
@@ -44,6 +49,7 @@ const MY_CERTIFICATES = [
     date: "2024",
     skills: ["Data Concepts", "ETL Pipelines", "Data Visualization basics"],
     pdfUrl: "/certificates/Exploración de los conceptos de los datos principales.pdf",
+    category: "tech"
   },
   {
     title: "Relational Database Services on Azure",
@@ -51,6 +57,7 @@ const MY_CERTIFICATES = [
     date: "2024",
     skills: ["Azure SQL", "Database Administration", "Cloud Infrastructure"],
     pdfUrl: "/certificates/Exploración de los servicios de bases de datos relacionales en Azure.pdf",
+    category: "tech" 
   },
   {
     title: "Data System Roles & Ecosystem Services",
@@ -58,6 +65,7 @@ const MY_CERTIFICATES = [
     date: "2024",
     skills: ["Data Engineering", "Data Analyst roles", "Data Governance"],
     pdfUrl: "/certificates/Exploración de roles y servicios de datos.pdf",
+    category: "tech" 
   },
   {
     title: "Data Visualization Core Aspects",
@@ -65,6 +73,7 @@ const MY_CERTIFICATES = [
     date: "2024",
     skills: ["Power BI", "Dashboard Design", "Reporting Insights"],
     pdfUrl: "/certificates/Explorar Los aspectos Basicos de la visualizacion de datos.pdf",
+    category: "tech" 
   },
   {
     title: "Python Programming for Beginners",
@@ -72,13 +81,15 @@ const MY_CERTIFICATES = [
     date: "2024",
     skills: ["Python OOP", "Automation Scripts", "Data Structures"],
     pdfUrl: "/certificates/Python para principiantes Ninehub.pdf",
+    category: "tech" 
   },
-{
+  {
     title: "Python Immersive BootCamp",
     issuer: "Alura Latam",
     date: "2024",
     skills: ["Python OOP", "Automation Scripts", "Data Structures", "Algorithm Design"],
     pdfUrl: "/certificates/Certificado Inmersion Python.pdf",
+    category: "tech" 
   },
   {
     title: "Tech Innovation & Youth Leadership Program",
@@ -86,11 +97,13 @@ const MY_CERTIFICATES = [
     date: "2026",
     skills: ["Civic Innovation", "Digital Sovereignty", "Democratic Solutions Design", "Tech Leadership (20h)"],
     pdfUrl: "/certificates/Certificado-DemosJovenes.pdf",
+    category: "legal" 
   },
 ];
 
 export default function CertificatesWindow() {
   const [activePdf, setActivePdf] = useState(null);
+  const [activeTab, setActiveTab] = useState('all'); // Estado para controlar el filtro: 'all', 'tech', 'legal'
 
   const handlePdfToggle = (cert) => {
     if (activePdf && activePdf.pdfUrl === cert.pdfUrl) {
@@ -99,6 +112,12 @@ export default function CertificatesWindow() {
       setActivePdf(cert);
     }
   };
+
+  // Filtrado dinámico de los certificados
+  const filteredCertificates = MY_CERTIFICATES.filter(cert => {
+    if (activeTab === 'all') return true;
+    return cert.category === activeTab;
+  });
 
   return (
     <div style={{
@@ -121,8 +140,38 @@ export default function CertificatesWindow() {
         flexShrink: 0,
         fontWeight: 'bold',
         color: 'var(--black)',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
       }}>
-        [CERTIFICATES.log ]
+        <span>[CERTIFICATES.log]</span>
+        
+        {/* Pestañas de Filtro */}
+        <div style={{ display: 'flex', gap: '8px' }}>
+          {['all', 'tech', 'legal'].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => {
+                setActiveTab(tab);
+                setActivePdf(null); // Cerramos el PDF abierto si se cambia de pestaña
+              }}
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '11px',
+                textTransform: 'uppercase',
+                padding: '2px 8px',
+                cursor: 'pointer',
+                border: 'var(--border-thin)',
+                borderRadius: '3px',
+                background: activeTab === tab ? 'var(--black)' : 'var(--beige)',
+                color: activeTab === tab ? 'white' : 'var(--black)',
+                fontWeight: activeTab === tab ? 'bold' : 'normal',
+              }}
+            >
+              {tab === 'all' ? '[All]' : tab === 'tech' ? '[Tech]' : '[Legal]'}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* PDF Viewer inline */}
@@ -145,7 +194,7 @@ export default function CertificatesWindow() {
             borderBottom: 'var(--border-thin)',
             padding: '6px 12px',
             display: 'flex',
-            justify: 'space-between',
+            justifyContent: 'space-between', 
             alignItems: 'center',
             flexShrink: 0,
           }}>
@@ -206,7 +255,8 @@ export default function CertificatesWindow() {
 
       {/* Certificates Grid List */}
       <div style={{ overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', flex: 1 }}>
-        {MY_CERTIFICATES.map((cert, i) => {
+
+        {filteredCertificates.map((cert, i) => {
           const isCurrentActive = activePdf?.pdfUrl === cert.pdfUrl;
           return (
             <div
@@ -244,7 +294,8 @@ export default function CertificatesWindow() {
                     background: 'var(--beige)',
                     border: 'var(--border-thin)',
                     borderRadius: '2px'
-                  }}>
+                  }}
+                  >
                     {skill}
                   </span>
                 ))}
@@ -256,27 +307,21 @@ export default function CertificatesWindow() {
                 borderTop: '1px dashed currentColor',
                 paddingTop: '6px',
                 display: 'flex',
-                justify: 'space-between',
+                justifyContent: 'space-between', 
                 alignItems: 'center',
               }}>
                 {cert.pdfUrl && (
                   <motion.button
                     onClick={() => handlePdfToggle(cert)}
-
-                    // Animación al pasar el mouse por encima
                     whileHover={{ 
                       scale: 1.01, 
                       backgroundColor: isCurrentActive ? 'var(--mint-light)' : '#f2b8c6',
                       boxShadow: 'rgba(26, 22, 18, 0.4) 4px 4px 0px' 
                     }}
-
-                    // Animación al hacer click
                     whileTap={{ 
                       scale: 0.98,
                       boxShadow: 'rgba(26, 22, 18, 0.1) 1px 1px 0px'
                     }}
-
-                    // Transición suave para los cambios de color y sombras
                     style={{
                       width: '100%',
                       padding: '8px',

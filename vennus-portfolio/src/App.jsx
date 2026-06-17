@@ -171,7 +171,7 @@ export default function App() {
               key={win.id}
               className={`desktop-icon${openWindows[win.id] ? ' selected' : ''}`}
               onDoubleClick={() => openWindow(win.id)}
-              onClick={() => openWindow(win.id)} // single tap on mobile
+              onClick={() => openWindow(win.id)} 
               title={`Open ${win.label}`}
             >
               <div className="icon-image">{win.icon}</div>
