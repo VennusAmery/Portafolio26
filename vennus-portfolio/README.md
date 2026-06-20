@@ -1,8 +1,4 @@
 # ✦ Vennus Portfolio 
-
-A creative portfolio built as an interactive retro desktop environment.
-LegalTech · Cybersecurity · Development
-
 --
 ## 💻 Terminal Commands
 
@@ -23,10 +19,3 @@ Available commands in the terminal window:
 - React Icons
 - CSS custom properties
 - Google Fonts: VT323, Special Elite, Courier Prime
-
----
-
-## ✦ Author
-
-**Vennus** — LegalTech Developer & Cybersecurity Enthusiast  
-Where code meets law.
