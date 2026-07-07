@@ -8,7 +8,7 @@ const MY_CERTIFICATES = [
     issuer: "Microsoft / Learn",
     date: "2024",
     skills: ["Azure Blob Storage", "Azure Data Lake Storage", "NoSQL Concepts"],
-    pdfUrl: "/certificates/Exploración de Azure Storage para datos no relacionales.pdf", 
+    pdfUrl: "certificates/Exploración-de-Azure-Storage-para-datos-no-relacionales.pdf", 
     category: "tech" 
   },
   {
@@ -16,7 +16,7 @@ const MY_CERTIFICATES = [
     issuer: "Microsoft / Learn",
     date: "2024",
     skills: ["SQL", "Relational Databases", "Azure Data Factory"],
-    pdfUrl: "/certificates/Exploración de conceptos fundamentales de datos relacionales.pdf",
+    pdfUrl: "certificates/Exploración-de-conceptos-fundamentales-de-datos-relacionales.pdf",
     category: "tech" 
   },
   {
@@ -24,7 +24,7 @@ const MY_CERTIFICATES = [
     issuer: "Microsoft / Learn",
     date: "2024",
     skills: ["NoSQL", "Cosmos DB", "Global Distribution", "Latency Management"],
-    pdfUrl: "/certificates/Exploración de los aspectos básicos de Azure Cosmos DBs.pdf",
+    pdfUrl: "certificates/Exploración-de-los-aspectos-básicos-de-Azure-Cosmos-DBs.pdf",
     category: "tech" 
   },
   {
@@ -32,7 +32,7 @@ const MY_CERTIFICATES = [
     issuer: "Microsoft / Learn",
     date: "2024",
     skills: ["Big Data", "Azure Synapse Analytics", "Data Lakes"],
-    pdfUrl: "/certificates/Exploración de los aspectos básicos del análisis a gran escala.pdf",
+    pdfUrl: "certificates/Exploración-de-los-aspectos-básicos-del-análisis-a-gran-escala.pdf",
     category: "tech" 
   },
   {
@@ -40,7 +40,7 @@ const MY_CERTIFICATES = [
     issuer: "Microsoft / Learn",
     date: "2024",
     skills: ["Stream Analytics", "Event Hubs", "Real-Time Querying"],
-    pdfUrl: "/certificates/Exploración de los aspectos básicos del análisis en tiempo real.pdf",
+    pdfUrl: "certificates/Exploración-de-los-aspectos-básicos-del-análisis-en-tiempo-real.pdf",
     category: "tech" 
   },
   {
@@ -48,7 +48,7 @@ const MY_CERTIFICATES = [
     issuer: "Microsoft / Learn",
     date: "2024",
     skills: ["Data Concepts", "ETL Pipelines", "Data Visualization basics"],
-    pdfUrl: "/certificates/Exploración de los conceptos de los datos principales.pdf",
+    pdfUrl: "certificates/Exploración-de-los-conceptos-de-los-datos-principales.pdf",
     category: "tech"
   },
   {
@@ -56,7 +56,7 @@ const MY_CERTIFICATES = [
     issuer: "Microsoft / Learn",
     date: "2024",
     skills: ["Azure SQL", "Database Administration", "Cloud Infrastructure"],
-    pdfUrl: "/certificates/Exploración de los servicios de bases de datos relacionales en Azure.pdf",
+    pdfUrl: "certificates/Exploración-de-los-servicios-de-bases-de-datos-relacionales-en-Azure.pdf",
     category: "tech" 
   },
   {
@@ -64,7 +64,7 @@ const MY_CERTIFICATES = [
     issuer: "Microsoft / Learn",
     date: "2024",
     skills: ["Data Engineering", "Data Analyst roles", "Data Governance"],
-    pdfUrl: "/certificates/Exploración de roles y servicios de datos.pdf",
+    pdfUrl: "certificates/Exploración-de-los-roles-y-servicios-de-datos.pdf",
     category: "tech" 
   },
   {
@@ -72,7 +72,7 @@ const MY_CERTIFICATES = [
     issuer: "Microsoft / Learn",
     date: "2024",
     skills: ["Power BI", "Dashboard Design", "Reporting Insights"],
-    pdfUrl: "/certificates/Explorar Los aspectos Basicos de la visualizacion de datos.pdf",
+    pdfUrl: "certificates/Exploración-de-los-aspectos-básicos-de-la-visualización-de-datos.pdf",
     category: "tech" 
   },
   {
@@ -80,7 +80,7 @@ const MY_CERTIFICATES = [
     issuer: "Ninehub",
     date: "2024",
     skills: ["Python OOP", "Automation Scripts", "Data Structures"],
-    pdfUrl: "/certificates/Python para principiantes Ninehub.pdf",
+    pdfUrl: "certificates/Python-para-principiantes-Ninehub.pdf",
     category: "tech" 
   },
   {
@@ -88,7 +88,7 @@ const MY_CERTIFICATES = [
     issuer: "Alura Latam",
     date: "2024",
     skills: ["Python OOP", "Automation Scripts", "Data Structures", "Algorithm Design"],
-    pdfUrl: "/certificates/Certificado Inmersion Python 4.pdf",
+    pdfUrl: "certificates/Certificado-Inmersion-Python-4.pdf",
     category: "tech" 
   },
   {
@@ -96,7 +96,7 @@ const MY_CERTIFICATES = [
     issuer: "Corporación CPIL",
     date: "2026",
     skills: ["Civic Innovation", "Digital Sovereignty", "Democratic Solutions Design", "Tech Leadership (20h)"],
-    pdfUrl: "/certificates/Certificado-DemosJovenes.pdf",
+    pdfUrl: "certificates/Certificado-DemosJovenes.pdf",
     category: "legal" 
   },
 ];
@@ -204,7 +204,7 @@ export default function CertificatesWindow() {
             </span>
             <div style={{ display: 'flex', gap: '8px' }}>
               <a 
-                href={encodeURI(activePdf.pdfUrl)} 
+                href={encodeURI(`${process.env.PUBLIC_URL}/${activePdf.pdfUrl}`)} 
                 target="_blank" 
                 rel="noreferrer"
                 style={{

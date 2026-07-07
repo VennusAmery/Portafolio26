@@ -1,9 +1,5 @@
 # ✦ Vennus Portfolio 
 
-A creative portfolio built as an interactive retro desktop environment.
-LegalTech · Cybersecurity · Development
-
---
 ## 💻 Terminal Commands
 
 Available commands in the terminal window:
@@ -28,5 +24,4 @@ Available commands in the terminal window:
 
 ## ✦ Author
 
-**Vennus** — LegalTech Developer & Cybersecurity Enthusiast  
-Where code meets law.
+**Vennus** — Where code meets law.

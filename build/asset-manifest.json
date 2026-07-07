@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/Portafolio26/static/css/main.5611c8ff.css",
+    "main.js": "/Portafolio26/static/js/main.8dffcc8e.js",
+    "static/media/scubacat-demo.mp4": "/Portafolio26/static/media/scubacat-demo.f311563caee53c03b883.mp4",
+    "static/media/API-DCA.mp4": "/Portafolio26/static/media/API-DCA.b8e840e083e63d854b66.mp4",
+    "static/media/MergeIt.mp4": "/Portafolio26/static/media/MergeIt.e639a618e98319d360a3.mp4",
+    "static/media/LittleMe.mp4": "/Portafolio26/static/media/LittleMe.648dfd80ef7e17d32b89.mp4",
+    "static/media/commingsoon.gif": "/Portafolio26/static/media/commingsoon.cd9104da65174ca11c72.gif",
+    "static/media/gato-puno.png": "/Portafolio26/static/media/gato-puno.d95a7e7a640074b1e843.png",
+    "static/media/gato-sonrisa.png": "/Portafolio26/static/media/gato-sonrisa.33fdb0120cadc8f6dbfe.png",
+    "static/media/gato-boca.png": "/Portafolio26/static/media/gato-boca.7753b78a99c453397a51.png",
+    "static/media/gato-palma.png": "/Portafolio26/static/media/gato-palma.e8a657b947a9a504a2b1.png",
+    "static/media/gato-inicio.png": "/Portafolio26/static/media/gato-inicio.ed4169deb82f8ebe3084.png",
+    "static/media/MergeIt3.png": "/Portafolio26/static/media/MergeIt3.31123bc102a5c866b50c.png",
+    "static/media/LittleMe2.png": "/Portafolio26/static/media/LittleMe2.6b7edbfa6cd0bf5a01cd.png",
+    "static/media/LittleMe1.png": "/Portafolio26/static/media/LittleMe1.123c36082ba8bb21e551.png",
+    "static/media/me.jpg": "/Portafolio26/static/media/me.a628771add692ff03c7f.jpg",
+    "static/media/MergeIt2.png": "/Portafolio26/static/media/MergeIt2.f30d26e43d0fd1f321ed.png",
+    "static/media/MergeIt1.png": "/Portafolio26/static/media/MergeIt1.537a2d156bbc95f750f8.png",
+    "static/media/perrito.jpeg": "/Portafolio26/static/media/perrito.e11889a7569f9eea5f30.jpeg",
+    "index.html": "/Portafolio26/index.html",
+    "main.5611c8ff.css.map": "/Portafolio26/static/css/main.5611c8ff.css.map",
+    "main.8dffcc8e.js.map": "/Portafolio26/static/js/main.8dffcc8e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5611c8ff.css",
+    "static/js/main.8dffcc8e.js"
+  ]
+}
