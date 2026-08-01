@@ -13,7 +13,6 @@
 - 📊 Barra de tareas funcional
 - 🌀 Pantalla de carga con animación de boot
 - 📁 Modales tipo explorador de archivos por proyecto
-- 🎬 Secuencias de boot animadas en cada preview
 - 🗂️ Pestañas: Demo en vivo, Explorador de archivos, Info
 
 ---
@@ -27,18 +26,6 @@
 | Fuentes     | VT323, Special Elite, Courier Prime  |
 | Deploy      | GitHub Pages                         |
 | Gestor      | pnpm                                 |
-
----
-
-## 📂 Estructura de datos
-
-Todo el contenido (proyectos, certificados, textos) vive centralizado en:
-
-```
-src/data/portfolioData.js
-```
-
-Editar ese archivo actualiza todo el sitio sin tocar componentes.
 
 ---
 
@@ -62,4 +49,4 @@ El deploy automático corre vía GitHub Actions en cada push a `main`.
 
 ## 👩‍💻 Autora
 
-**Vennus** — Ingeniería en Sistemas & Derecho
+**Vennus** — Ingeniería en Sistemas & Ciencias Jurídicas y Sociales 
