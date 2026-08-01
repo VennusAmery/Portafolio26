@@ -92,9 +92,17 @@ const MY_CERTIFICATES = [
     category: "tech" 
   },
   {
+    title: "Python in Practice Week",
+    issuer: "Daxus Latam",
+    date: "2026",
+    skills: ["Python", "Scripting", "Software Development (8h)"],
+    pdfUrl: "certificates/Semana_Python_DaxusLatam.pdf",
+    category: "tech"
+  },
+  {
     title: "Tech Innovation & Youth Leadership Program",
     issuer: "Corporación CPIL",
-    date: "2026",
+    date: "2025",
     skills: ["Civic Innovation", "Digital Sovereignty", "Democratic Solutions Design", "Tech Leadership (20h)"],
     pdfUrl: "certificates/Certificado-DemosJovenes.pdf",
     category: "legal" 
