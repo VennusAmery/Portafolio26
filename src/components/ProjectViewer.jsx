@@ -24,7 +24,18 @@ import LittleMe from '../videos/LittleMe.mp4';
 import chibiScreen1 from '../images/LittleMe/LittleMe1.png';
 import chibiScreen2 from '../images/LittleMe/LittleMe2.png';
 
-import DCA from '../videos/API-DCA.mp4';
+import DCA from '../videos/DCA_VER2.mp4';
+import DCA1 from '../images/DCA_ver2/DCA1.png';
+import DCA2 from '../images/DCA_ver2/DCA2.png';
+import DCA3 from '../images/DCA_ver2/DCA3.png';
+import DCA_PDF from '../pdfs/Publicacion_DCA.pdf';
+
+import ResumirApp from '../videos/ResumidorApp.mp4';
+import ResumirAppF1 from '../images/ResumirApp/Resumir1.png';
+import ResumirAppF2 from '../images/ResumirApp/Resumir2.png';
+import ResumirAppF3 from '../images/ResumirApp/Resumir3.png';
+import Resumir_PDF from '../pdfs/Resumir.pdf';
+
 // ── Project Definitions ──────────────────────────────────────
 const PROJECTS = [
   {
@@ -40,7 +51,7 @@ const PROJECTS = [
     githubUrl: '', 
     liveUrl: '', 
     description: 'Full legal management platform with AI-powered case tracking, document automation and jurisprudence analysis.',
-    prototypeLabel: '▶️ Run Tool',
+    prototypeLabel: '▶️ Run System',
     bootMessages: [
       'Initializing LUMES OS...',
       'Loading legal modules [OK]',
@@ -295,23 +306,26 @@ const PROJECTS = [
 {
     id: 'dcascraper',
     name: 'DCA Automation Pipeline',
-    tagline: 'Legal Gazette Scraper & OCR Text Extractor',
+    tagline: 'OCR & AI Executive Summaries',
     category: 'Backend / LegalTech',
     icon: '📰',
     status: 'Completed',
     statusColor: '#b8e0c8',
     accentColor: '#1a120844', 
-    tech: ['Python', 'OCR', 'PDF Processing', 'Automation'],
+    tech: ['Python', 'Flask', 'Gemini AI', 'OCR', 'React'],
     githubUrl: 'https://github.com/VennusAmery/DCA',
     liveUrl: '',
-    description: 'An automated legal data pipeline designed to track the "Diario de Centro América" (Official Gazette). It checks for new daily publications, downloads newly issued PDF files, handles deduplication states, tracks history logs, and converts documents into structured searchable text via image OCR pipelines.',
-    prototypeLabel: '▶️ Execute Script',
+    pdfSample: DCA_PDF,
+    description: 'An automated legal data pipeline that tracks the "Diario de Centro América" (Guatemala\'s official gazette). It downloads newly issued daily PDFs, deduplicates against a local JSON registry, and runs an OCR pipeline to extract structured text from scanned pages. Extracted text is sent to Gemini to generate an AI executive summary, which is then rendered into a branded PDF report. Editions, transcriptions, and generated reports are indexed on disk and served through a Flask REST API to a React frontend where each publication can be reviewed, read, and downloaded.',    prototypeLabel: '▶️ Execute Script',
+    prototypeLabel: '▶️ Execute System',
     bootMessages: [
-      'C:\\Users\\Vennus> python dca_pipeline.py',
+      'C:\\Users\\Vennus> python -m services.auto_dca.py',
       'Connecting to Diario de Centro América gateway... [OK]',
-      'Fetching latest gazette publication metadata... [OK]',
-      'Checking state history logs... [OK]',
-      'Launching execution sequence...',
+      'Checking local registry for duplicate editions... [OK]',
+      'Running OCR transcription pipeline... [OK]',
+      'Generating AI executive summary via Gemini... [OK]',
+      'Rendering branded PDF report... [OK]',
+      'Indexing edition, transcription & report... [OK]',
     ],
     bootColor: '#a8f0c0', 
 
@@ -346,24 +360,105 @@ const PROJECTS = [
     ),
 
     files: {
-      'README.md': `# 📰 DCA Legal Gazette Pipeline\n\nAutomated tracking solution to monitor, pull, partition, and process text data strings out of Guatemalas official legal gazette ("Diario de Centro América").\n\n## 🛠️ Internal Framework\n- **Scraper Engine:** Target endpoint analysis to monitor publication schedules.\n- **Deduplication Audit:** State check mechanisms to ignore redundant execution runs.\n- **OCR Core:** Converts structural image layouts into queryable raw text tokens.`,
-      'architecture.txt': 'CORE ENGINE → Python 3.11\nSCRAPER PATTERN → Document Target Requests\nDEDUPLICATION → Local File System State Registry\nPROCESSING → PDF Binary to Image Array Mesh\nTRANSCRIPTION ENGINE → Layout-Aware Optical OCR Extraction'
+      'README.md': `# 📰 DCA Legal Gazette Pipeline\n\nAutomated tracking solution to monitor, pull, transcribe, and summarize Guatemala's official legal gazette ("Diario de Centro América").\n\n## 🛠️ Internal Framework\n- **Scraper Engine:** Downloads the daily gazette PDF and checks it against a local JSON registry to avoid reprocessing.\n- **OCR Core:** Converts scanned page layouts into structured, searchable raw text.\n- **AI Summary Layer:** Sends transcribed text to Gemini, which returns a structured executive summary (impact analysis, plain-language explanation, legal analysis, glossary).\n- **Report Generator:** Renders the AI summary into a branded PDF report using ReportLab.\n- **Persistence:** Editions, transcriptions, summaries, and generated PDFs are indexed on disk, mapped by edition name.\n- **API + Frontend:** A Flask REST API exposes editions, summaries, and PDF downloads to a React interface for browsing publications.`,
+      'architecture.txt': 'CORE ENGINE → Python 3.11\nSCRAPER PATTERN → Scheduled daily PDF download (APScheduler)\nDEDUPLICATION → Local JSON registry lookup by filename\nPROCESSING → PDF binary → image array → OCR text extraction\nSUMMARIZATION → Gemini 2.5 Flash executive-summary generation\nREPORT RENDERING → ReportLab branded PDF generation\nPERSISTENCE → Filesystem index (JSON registry + mapped storage folders)\nAPI LAYER → Flask REST endpoints (CORS-enabled)\nFRONTEND → React + Vite, consumes the API to list, read, and download editions'
     },
 
     screenshots: [
-      { label: 'Scraper Scan', 
+      { label: 'Scraper Scan and OCR Processing', 
         desc: 'Validating the official gateway registry to spot publication schedule differences.',
+        src: DCA1
       },
 
-      { label: 'OCR Processing', 
-        desc: 'Isolating layout grids to run translation matrix lookups across document files.',
+      { label: 'AI Executive Summary', 
+        desc: 'Sending transcribed text to Gemini to generate a structured legal-impact summary.',        
+        src: DCA2
       },
 
-      { label: 'Database Write', 
-        desc: 'Storing transcribed raw string outputs directly into clean system indexes.',
+      { label: 'PDF Report Generation', 
+        desc: 'Rendering the AI summary into a branded PDF report with ReportLab.',
+        src: DCA3    
       }
     ]
   },
+
+{
+    id: 'ResumirApp',
+    name: 'AI Class Summarizer',
+    tagline: 'AI Study Guide Generator',
+    category: 'Frontend / LegalTech / EdTech',
+    icon: '📚',
+    status: 'Completed',
+    statusColor: '#b8e0c8',
+    accentColor: '#8c2f2f44', 
+    tech: ['React', 'Node.js', 'Express', 'Gemini API', 'jsPDF', 'Python'],
+    githubUrl: 'https://github.com/VennusAmery/ResumirApp',
+    liveUrl: 'https://resumir-app-me8r.vercel.app/',
+    pdfSample: Resumir_PDF,
+    description: 'A full-stack pedagogical tool that turns raw class transcripts (.txt) into a neuroscience-based study guide. A custom instructional-design prompt drives an LLM to extract every topic, article, law, cross-reference, and mnemonic device covered in class — with a strict single-read comprehension rule — then renders it into a styled, downloadable PDF dossier.',
+    prototypeLabel: '▶️ Execute App',
+    bootMessages: [
+      'C:\\Users\\Vennus> pnpm run dev',
+      'Loading neuroaprendizaje system prompt... [OK]',
+      'Connecting to generative model gateway... [OK]',
+      'Awaiting transcript upload...',
+      'Launching execution sequence...',
+    ],
+    bootColor: '#a8f0c0', 
+
+    prototype: () => (
+      <div style={{ 
+        height: '100%', 
+        minHeight: '350px',
+        background: '#121214', 
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '12px',
+        borderRadius: '8px',
+        overflow: 'hidden'
+      }}>
+        <video 
+          src={ResumirApp} 
+          controls
+          autoPlay
+          muted
+          loop
+          style={{
+            width: '100%',
+            height: '100%',
+            maxHeight: '450px',
+            objectFit: 'contain', 
+            borderRadius: '6px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.5)'
+          }}
+        />
+      </div>
+    ),
+
+    files: {
+      'README.md': `# ⚖️ Expediente de Clase\n\nWeb app that converts raw class transcripts into a single-read, neuroscience-based study guide with full topic/article/law coverage, then exports it as a styled PDF.\n\n## 🛠️ Internal Framework\n- **Instructional Prompt Engine:** Enforces a strict single-read comprehension methodology (definitions, analogies, mnemonics, common errors).\n- **Coverage Checklist:** Cross-checks generated output against a full topic/article/law inventory before delivery.\n- **PDF Renderer:** Client-side jsPDF engine with a custom legal-dossier visual theme (seal, cover page, vertical table cards).`,
+      'architecture.txt': 'CORE ENGINE → Node.js + Express\nMODEL LAYER → Gemini API (system-prompt driven)\nCLIENT → React + Vite\nOUTPUT ENGINE → Markdown to jsPDF Render Pipeline\nSANITIZATION → Unicode/Table Normalizer for Print-Safe Output'
+    },
+
+    screenshots: [
+      { label: 'Upload Transcript', 
+        desc: 'Drag-and-drop intake for the raw .txt class transcript before processing.',
+        src: ResumirAppF1
+      },
+
+      { label: 'Guide Generation', 
+        desc: 'System prompt drives topic, article, and law extraction with full-coverage verification.',
+        src: ResumirAppF2
+      },
+
+      { label: 'PDF Export', 
+        desc: 'Structured study guide rendered into a styled, downloadable legal-dossier PDF.',
+        src: ResumirAppF3
+      }
+    ]
+  },
+
 
 ];
 
@@ -492,6 +587,15 @@ function FileExplorer({ project }) {
             </div>
           </div>
         )}
+
+        {selectedFile === 'pdf' && project.pdfSample && (
+          <iframe
+            src={project.pdfSample}
+            title="PDF Sample"
+            style={{ width: '100%', height: '500px', border: 'var(--border-thin)' }}
+          />
+        )}
+
       </div>
     </div>
   );
@@ -523,6 +627,7 @@ function ProjectModal({ project, onClose }) {
     { id: 'prototype', label: '▶ Live Demo' },
     { id: 'explorer', label: '📂 Explorer' },
     { id: 'info', label: 'ℹ️ Info' },
+    ...(project.pdfSample ? [{ id: 'pdf', label: '📄 PDF Sample' }] : []),
   ];
 
   return createPortal(
@@ -631,6 +736,17 @@ function ProjectModal({ project, onClose }) {
               )}
             </motion.div>
           )}
+
+          {tab === 'pdf' && project.pdfSample && (
+            <motion.div key="pdf" initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ height: '100%' }}>
+              <iframe
+                src={project.pdfSample}
+                title="PDF Sample"
+                style={{ width: '100%', height: '100%', border: 'none' }}
+              />
+            </motion.div>
+          )}
+
         </AnimatePresence>
       </div>
     </motion.div>,
@@ -723,7 +839,7 @@ export default function ProjectViewer() {
     <div className="window-pad" style={{ position: 'relative' }}>
       {/* Header */}
       <div style={{ marginBottom: 16 }}>
-        <div className="label" style={{ marginBottom: 10 }}>[ PROJECTS — {PROJECTS.length} sistemas ]</div>
+        <div className="label" style={{ marginBottom: 10 }}>[ PROJECTS — {PROJECTS.length} Systems ]</div>
         {/* Filter tabs */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
           {categories.map(cat => (

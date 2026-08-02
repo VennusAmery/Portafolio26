@@ -102,7 +102,7 @@ const MY_CERTIFICATES = [
   {
     title: "Tech Innovation & Youth Leadership Program",
     issuer: "Corporación CPIL",
-    date: "2025",
+    date: "2026",
     skills: ["Civic Innovation", "Digital Sovereignty", "Democratic Solutions Design", "Tech Leadership (20h)"],
     pdfUrl: "certificates/Certificado-DemosJovenes.pdf",
     category: "legal" 
@@ -248,8 +248,7 @@ export default function CertificatesWindow() {
 
           {/* PDF iframe viewport */}
           <iframe
-            src={encodeURI(activePdf.pdfUrl)}
-            title={activePdf.title}
+            src={encodeURI(`${process.env.PUBLIC_URL}/${activePdf.pdfUrl}`)}            title={activePdf.title}
             style={{
               flex: 1,
               width: '100%',
@@ -320,6 +319,7 @@ export default function CertificatesWindow() {
               }}>
                 {cert.pdfUrl && (
                   <motion.button
+                    type="button"
                     onClick={() => handlePdfToggle(cert)}
                     whileHover={{ 
                       scale: 1.01, 

@@ -84,6 +84,17 @@ export const PROJECTS = [
     tech: ["React", "TypeScript", "pdf-lib", "@dnd-kit/core", "Framer Motion"],
     status: "Completed",
     color: "var(--pink-light)"
+  },
+
+  
+  {
+    id: 6,
+    name: "ResumirApp",
+    category: "Web Utility / Web Tool",
+    description: "A secure, client-side PDF management tool featuring interactive drag-and-drop file reordering, instant iframe document previews, and client-side compilation via pdf-lib, ensuring absolute data privacy by processing all files entirely within the user's browser.",
+    tech: ["React", "TypeScript", "pdf-lib", "@dnd-kit/core", "Framer Motion"],
+    status: "Completed",
+    color: "var(--pink-light)"
   }
 
 ];
@@ -114,8 +125,8 @@ export const SKILLS = {
     { name: "Vulnerability Analysis", level: 63 }
   ],
     DevOps: [
-    { name: "Linux", level: 80 },
-    { name: "Ubuntu", level: 78 },
+    { name: "Linux", level: 60 },
+    { name: "Ubuntu", level: 50 },
     { name: "Kali Linux", level: 60 },
     { name: "Git/GitHub", level: 95 },
     { name: "Visual Studio Code", level: 90 }
@@ -123,7 +134,6 @@ export const SKILLS = {
   legal: [
     { name: "Cybercrime Law", level: 80 },
     { name: "Data Privacy (GDPR/local)", level: 78 },
-    { name: "Smart Contracts Law", level: 70 },
     { name: "Digital Governance", level: 75 },
     { name: "AI Regulation", level: 72 }
   ]
@@ -143,12 +153,6 @@ export const TIMELINE = [
     University: "Mariano Galvez de Guatemala",
     description: "Began Law degree. Gained deep understanding of legal principles, with a focus on technology law, cybercrime, and digital rights.",
     type: "education"
-  },
-  {
-    year: "2026",
-    title: "First LegalTech Project",
-    description: "Developed LUMES prototype — realized this was my calling. LegalTech became the mission.",
-    type: "project"
   }
 ];
 
