@@ -90,9 +90,19 @@ export const PROJECTS = [
   {
     id: 6,
     name: "ResumirApp",
+    category: "Web Tool / EdTech / LegalTech",
+    description: "A full-stack study guide generator that converts raw class transcripts (.txt) into a neuroscience-based learning document. A custom instructional-design system prompt drives an LLM to extract every topic, legal article, law, cross-reference, and mnemonic device covered in class, then compiles the result into a styled, downloadable PDF dossier via a client-side jsPDF rendering engine.",
+    tech: ["React", "Node.js", "Express", "Gemini API", "jsPDF"],
+    status: "Completed",
+    color: "var(--red-light)"
+  },
+
+  {
+    id: 7,
+    name: "WebScraper",
     category: "Web Utility / Web Tool",
-    description: "A secure, client-side PDF management tool featuring interactive drag-and-drop file reordering, instant iframe document previews, and client-side compilation via pdf-lib, ensuring absolute data privacy by processing all files entirely within the user's browser.",
-    tech: ["React", "TypeScript", "pdf-lib", "@dnd-kit/core", "Framer Motion"],
+    description: "Extracts text from any URL and exports it organized into TXT and PDF files, with full support for accents and special characters.",
+    tech: ["Python", "BeautifulSoup", "Requests", "fpdf2"],
     status: "Completed",
     color: "var(--pink-light)"
   }

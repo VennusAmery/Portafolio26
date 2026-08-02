@@ -36,6 +36,9 @@ import ResumirAppF2 from '../images/ResumirApp/Resumir2.png';
 import ResumirAppF3 from '../images/ResumirApp/Resumir3.png';
 import Resumir_PDF from '../pdfs/Resumir.pdf';
 
+import ScraperApp from '../videos/ScrapperWeb.mp4';
+import ScraperAppF1 from '../images/WebSrcapper/Scrapper1.png';
+
 // ── Project Definitions ──────────────────────────────────────
 const PROJECTS = [
   {
@@ -459,6 +462,77 @@ const PROJECTS = [
     ]
   },
 
+  {
+    id: 'WebScraper',
+    name: 'URL Text & PDF Extractor',
+    tagline: 'Clean Content, Anywhere',
+    category: 'Backend / Automation / Web Tool',
+    icon: '🕸️',
+    status: 'Completed',
+    statusColor: '#b8e0c8',
+    accentColor: '#2f5e8c44',
+    tech: ['Python', 'BeautifulSoup', 'Requests', 'fpdf2'],
+    githubUrl: 'https://github.com/VennusAmery/WebScrapper',
+    liveUrl: '',
+    description: 'A lightweight Python CLI tool that scrapes any given URL, extracts its readable content preserving paragraph and heading structure, and exports it into both a clean .txt file and a styled .pdf document — with full Unicode support for accents and special characters. Outputs are automatically organized into separate folders for text and PDF files.',
+    prototypeLabel: '▶️ Execute Script',
+    bootMessages: [
+      'C:\\Users\\Vennus> python scraper.py',
+      'Loading BeautifulSoup parser... [OK]',
+      'Fetching target URL...',
+      'Extracting structured content blocks...',
+      'Rendering DejaVu Unicode font... [OK]',
+      'Writing output to /textos and /pdfs...',
+    ],
+    bootColor: '#a8c8f0',
+
+    prototype: () => (
+      <div style={{ 
+        height: '100%', 
+        minHeight: '350px',
+        background: '#121214', 
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '12px',
+        borderRadius: '8px',
+        overflow: 'hidden'
+      }}>
+        <video 
+          src={ScraperApp} 
+          controls
+          autoPlay
+          muted
+          loop
+          style={{
+            width: '100%',
+            height: '100%',
+            maxHeight: '450px',
+            objectFit: 'contain', 
+            borderRadius: '6px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.5)'
+          }}
+        />
+      </div>
+    ),
+
+    files: {
+      'README.md': `# 🕸️ URL Text & PDF Extractor\n\nCLI tool that scrapes any URL and exports its readable content into a clean .txt and a styled .pdf, preserving heading/paragraph structure and full accent support.\n\n## 🛠️ Internal Framework\n- **Block Extractor:** Parses h1-h4, p, and li tags to keep semantic structure instead of raw word dumps.\n- **Unicode PDF Renderer:** Uses DejaVu Sans fonts to correctly render tildes, ñ, and special characters.\n- **Output Organizer:** Automatically routes files into /textos and /pdfs folders.`,
+      'architecture.txt': 'FETCH LAYER → Requests + custom headers\nPARSING → BeautifulSoup4 (block-level extraction)\nOUTPUT ENGINE → fpdf2 with DejaVu Unicode fonts\nFILE ORGANIZATION → Auto-generated /textos and /pdfs directories'
+    },
+
+    screenshots: [
+      { label: 'URL Input', 
+        desc: 'Terminal prompt where the user enters the target URL to scrape.',
+        src: ScraperAppF1
+      },
+
+      { label: 'Content Extraction', 
+        desc: 'Structured extraction of headings and paragraphs, ignoring scripts and styles.',
+        src: ScraperAppF1
+      }
+    ]
+  },
 
 ];
 
