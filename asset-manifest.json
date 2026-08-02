@@ -1,10 +1,11 @@
 {
   "files": {
     "main.css": "/Portafolio26/static/css/main.5611c8ff.css",
-    "main.js": "/Portafolio26/static/js/main.95f32307.js",
+    "main.js": "/Portafolio26/static/js/main.faec5d8a.js",
     "static/media/DCA_VER2.mp4": "/Portafolio26/static/media/DCA_VER2.1cf9b3e01dce24553a82.mp4",
     "static/media/ResumidorApp.mp4": "/Portafolio26/static/media/ResumidorApp.fb3803bf8a04bf40c262.mp4",
     "static/media/scubacat-demo.mp4": "/Portafolio26/static/media/scubacat-demo.f311563caee53c03b883.mp4",
+    "static/media/ScrapperWeb.mp4": "/Portafolio26/static/media/ScrapperWeb.93963eaedfc8028f72d1.mp4",
     "static/media/MergeIt.mp4": "/Portafolio26/static/media/MergeIt.e639a618e98319d360a3.mp4",
     "static/media/LittleMe.mp4": "/Portafolio26/static/media/LittleMe.648dfd80ef7e17d32b89.mp4",
     "static/media/commingsoon.gif": "/Portafolio26/static/media/commingsoon.cd9104da65174ca11c72.gif",
@@ -24,16 +25,17 @@
     "static/media/MergeIt2.png": "/Portafolio26/static/media/MergeIt2.f30d26e43d0fd1f321ed.png",
     "static/media/MergeIt1.png": "/Portafolio26/static/media/MergeIt1.537a2d156bbc95f750f8.png",
     "static/media/DCA1.png": "/Portafolio26/static/media/DCA1.0c789d6fc1861b0ef5fd.png",
+    "static/media/Scrapper1.png": "/Portafolio26/static/media/Scrapper1.afbed0a0fd973adf5010.png",
     "static/media/Resumir2.png": "/Portafolio26/static/media/Resumir2.4c07bcc63eb5823018cf.png",
     "static/media/DCA3.png": "/Portafolio26/static/media/DCA3.69c9b37fccd502109068.png",
     "static/media/perrito.jpeg": "/Portafolio26/static/media/perrito.e11889a7569f9eea5f30.jpeg",
     "static/media/Resumir1.png": "/Portafolio26/static/media/Resumir1.ffca5a415c9e8f453a08.png",
     "index.html": "/Portafolio26/index.html",
     "main.5611c8ff.css.map": "/Portafolio26/static/css/main.5611c8ff.css.map",
-    "main.95f32307.js.map": "/Portafolio26/static/js/main.95f32307.js.map"
+    "main.faec5d8a.js.map": "/Portafolio26/static/js/main.faec5d8a.js.map"
   },
   "entrypoints": [
     "static/css/main.5611c8ff.css",
-    "static/js/main.95f32307.js"
+    "static/js/main.faec5d8a.js"
   ]
 }
